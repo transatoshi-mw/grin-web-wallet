@@ -11,4 +11,4 @@ unzip "./master"
 cd "./MWC-Wallet-Standalone-master"
 "./build.sh"
 ```
-This will create the HTML file, `MWC Wallet Standalone.html`.
+This will create the HTML file, `MWC-Wallet-Standalone-master/MWC Wallet Standalone.html`.
