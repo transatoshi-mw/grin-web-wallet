@@ -114,6 +114,8 @@ sed -i "s#url(\"\.\./\.\./fonts/mwc/mwc\.woff\")#url(\"data:font/woff;base64,`ca
 sed -i "s#url(\"\.\./\.\./fonts/mwc/mwc\.woff2\")#url(\"data:font/woff2;base64,`cat "./mwcwallet.com-master/public_html/fonts/mwc/mwc.woff2" | openssl base64 -A`\")#" "./temp/fonts/mwc/mwc.css"
 sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans-1\.10\.woff\")#url(\"data:font/woff;base64,`cat "./mwcwallet.com-master/public_html/fonts/open_sans/open_sans-1.10.woff" | openssl base64 -A`\")#" "./temp/fonts/open_sans/open_sans.css"
 sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans-1\.10\.woff2\")#url(\"data:font/woff2;base64,`cat "./mwcwallet.com-master/public_html/fonts/open_sans/open_sans-1.10.woff2" | openssl base64 -A`\")#" "./temp/fonts/open_sans/open_sans.css"
+sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans_semibold-1\.10\.woff\")#url(\"data:font/woff;base64,`cat "./mwcwallet.com-master/public_html/fonts/open_sans/open_sans_semibold-1.10.woff" | openssl base64 -A`\")#" "./temp/fonts/open_sans/open_sans.css"
+sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans_semibold-1\.10\.woff2\")#url(\"data:font/woff2;base64,`cat "./mwcwallet.com-master/public_html/fonts/open_sans/open_sans_semibold-1.10.woff2" | openssl base64 -A`\")#" "./temp/fonts/open_sans/open_sans.css"
 
 # Inline styles
 sed -i -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/r ./temp/fonts/open_sans/open_sans.css" -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/i <style>" -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/a </style>" -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/d" "./temp/index.html"
