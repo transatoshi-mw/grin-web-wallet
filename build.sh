@@ -28,8 +28,9 @@ VERSION=$(grep -Po "(?<=VERSION_NUMBER = \").*(?=\";)" "./temp/backend/common.ph
 SERVER_NAME="mwcwallet.com" HTTPS="on" NO_FILE_VERSIONS="" NO_FILE_CHECKSUMS="" NO_MINIFIED_FILES=""  HTTP_SERVER_ADDRESS="https://mwcwallet.com" TOR_SERVER_ADDRESS="http://mwcwalletmiq3gdkmfbqlytxunvlxyli4m6zrqozk7xjc353ewqb6bad.onion" php "./mwcwallet.com-master/public_html/index.html" > "./temp/index.html"
 sed -i "/<link rel=\"preload\".*>/d" "./temp/index.html"
 sed -i "/<link rel=\"prefetch\".*>/d" "./temp/index.html"
-sed -i "/<link rel=\"manifest\".*>/d" "./temp/index.html"
+sed -i "/<link .* rel=\"manifest\".*>/d" "./temp/index.html"
 sed -i "/<meta name=\"msapplication-config\".*>/d" "./temp/index.html"
+sed -i "/<meta name=\"msapplication-starturl\".*>/d" "./temp/index.html"
 
 # Compile styles
 SERVER_NAME="mwcwallet.com" HTTPS="on" NO_FILE_VERSIONS="" NO_FILE_CHECKSUMS="" NO_MINIFIED_FILES=""  HTTP_SERVER_ADDRESS="https://mwcwallet.com" TOR_SERVER_ADDRESS="http://mwcwalletmiq3gdkmfbqlytxunvlxyli4m6zrqozk7xjc353ewqb6bad.onion" php "./mwcwallet.com-master/public_html/fonts/btc/btc.css" > "./temp/fonts/btc/btc.css"
@@ -49,6 +50,7 @@ SERVER_NAME="mwcwallet.com" HTTPS="on" NO_FILE_VERSIONS="" NO_FILE_CHECKSUMS="" 
 # Inline images
 sed -i "s#href=\"\./images/mask_images/mask_image\.svg\"#href=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/mask_images/mask_image.svg" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#src=\"\./images/countries/america\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/countries/america.svg" | openssl base64 -A`\"#" "./temp/index.html"
+sed -i "s#src=\"\./images/countries/france\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/countries/france.svg" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#src=\"\./images/app_icons/app_icon\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/app_icons/app_icon.svg" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#href=\"\./images/touch_icons/touch_icon-57x57\.png\"#href=\"data:image/png;base64,`cat "./mwcwallet.com-master/public_html/images/touch_icons/touch_icon-57x57.png" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#href=\"\./images/touch_icons/touch_icon-76x76\.png\"#href=\"data:image/png;base64,`cat "./mwcwallet.com-master/public_html/images/touch_icons/touch_icon-76x76.png" | openssl base64 -A`\"#" "./temp/index.html"
