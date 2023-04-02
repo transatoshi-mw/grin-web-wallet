@@ -32,6 +32,7 @@ sed -i "/<link .* rel=\"manifest\".*>/d" "./temp/index.html"
 sed -i "/<meta name=\"msapplication-config\".*>/d" "./temp/index.html"
 sed -i "/<meta name=\"msapplication-starturl\".*>/d" "./temp/index.html"
 sed -i "/<link rel=\"alternate\".*>/d" "./temp/index.html"
+sed -i "/<link rel=\"canonical\".*>/d" "./temp/index.html"
 
 # Compile styles
 SERVER_NAME="mwcwallet.com" HTTPS="on" NO_FILE_VERSIONS="" NO_FILE_CHECKSUMS="" NO_MINIFIED_FILES=""  HTTP_SERVER_ADDRESS="https://mwcwallet.com" TOR_SERVER_ADDRESS="http://mwcwalletmiq3gdkmfbqlytxunvlxyli4m6zrqozk7xjc353ewqb6bad.onion" php "./mwcwallet.com-master/public_html/fonts/btc/btc.css" > "./temp/fonts/btc/btc.css"
