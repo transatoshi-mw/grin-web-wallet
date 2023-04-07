@@ -5,21 +5,6 @@ wget "https://github.com/NicolasFlamel1/mwcwallet.com/archive/refs/heads/master.
 unzip "./master"
 cp -r "./mwcwallet.com-master/public_html/." "./temp/"
 chmod 777 -R "./temp/"
-wget "https://github.com/NicolasFlamel1/Secp256k1-zkp-WASM-Wrapper/releases/download/v0.0.29/Secp256k1-zkp-0.0.29.zip"
-unzip "./Secp256k1-zkp-0.0.29.zip"
-mv "./asmjs/secp256k1-zkp.js" "./temp/scripts/secp256k1-zkp-0.0.29.js"
-wget "https://github.com/NicolasFlamel1/BLAKE2b-WASM-Wrapper/releases/download/v0.0.2/BLAKE2b-0.0.2.zip"
-unzip "./BLAKE2b-0.0.2.zip"
-mv "./asmjs/BLAKE2b.js" "./temp/scripts/BLAKE2b-0.0.2.js"
-wget "https://github.com/NicolasFlamel1/Ed25519-WASM-Wrapper/releases/download/v0.0.22/Ed25519-0.0.22.zip"
-unzip "./Ed25519-0.0.22.zip"
-mv "./asmjs/Ed25519.js" "./temp/scripts/Ed25519-0.0.22.js"
-wget "https://github.com/NicolasFlamel1/X25519-WASM-Wrapper/releases/download/v0.0.23/X25519-0.0.23.zip"
-unzip "./X25519-0.0.23.zip"
-mv "./asmjs/X25519.js" "./temp/scripts/X25519-0.0.23.js"
-wget "https://github.com/NicolasFlamel1/SMAZ-WASM-Wrapper/releases/download/v0.0.31/SMAZ-0.0.31.zip"
-unzip "./SMAZ-0.0.31.zip"
-mv "./asmjs/SMAZ.js" "./temp/scripts/SMAZ-0.0.31.js"
 
 # Get version
 VERSION=$(grep -Po "(?<=VERSION_NUMBER = \").*(?=\";)" "./temp/backend/common.php")
@@ -120,6 +105,13 @@ sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans-1\.10\.woff\")#url(\"data:fo
 sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans-1\.10\.woff2\")#url(\"data:font/woff2;base64,`cat "./mwcwallet.com-master/public_html/fonts/open_sans/open_sans-1.10.woff2" | openssl base64 -A`\")#" "./temp/fonts/open_sans/open_sans.css"
 sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans_semibold-1\.10\.woff\")#url(\"data:font/woff;base64,`cat "./mwcwallet.com-master/public_html/fonts/open_sans/open_sans_semibold-1.10.woff" | openssl base64 -A`\")#" "./temp/fonts/open_sans/open_sans.css"
 sed -i "s#url(\"\.\./\.\./fonts/open_sans/open_sans_semibold-1\.10\.woff2\")#url(\"data:font/woff2;base64,`cat "./mwcwallet.com-master/public_html/fonts/open_sans/open_sans_semibold-1.10.woff2" | openssl base64 -A`\")#" "./temp/fonts/open_sans/open_sans.css"
+
+# Inline WASM
+sed -i "s#\"\.\" + getResource(\"\./scripts/secp256k1-zkp-0\.0\.29\.wasm\")#\"data:application/wasm;base64,`cat "./mwcwallet.com-master/public_html/scripts/secp256k1-zkp-0.0.29.wasm" | openssl base64 -A`\"#" "./temp/scripts/secp256k1-zkp-0.0.29.js"
+sed -i "s#\"\.\" + getResource(\"\./scripts/BLAKE2b-0\.0\.2\.wasm\")#\"data:application/wasm;base64,`cat "./mwcwallet.com-master/public_html/scripts/BLAKE2b-0.0.2.wasm" | openssl base64 -A`\"#" "./temp/scripts/BLAKE2b-0.0.2.js"
+sed -i "s#\"\.\" + getResource(\"\./scripts/Ed25519-0\.0\.22\.wasm\")#\"data:application/wasm;base64,`cat "./mwcwallet.com-master/public_html/scripts/Ed25519-0.0.22.wasm" | openssl base64 -A`\"#" "./temp/scripts/Ed25519-0.0.22.js"
+sed -i "s#\"\.\" + getResource(\"\./scripts/X25519-0\.0\.23\.wasm\")#\"data:application/wasm;base64,`cat "./mwcwallet.com-master/public_html/scripts/X25519-0.0.23.wasm" | openssl base64 -A`\"#" "./temp/scripts/X25519-0.0.23.js"
+sed -i "s#\"\.\" + getResource(\"\./scripts/SMAZ-0\.0\.31\.wasm\")#\"data:application/wasm;base64,`cat "./mwcwallet.com-master/public_html/scripts/SMAZ-0.0.31.wasm" | openssl base64 -A`\"#" "./temp/scripts/SMAZ-0.0.31.js"
 
 # Inline styles
 sed -i -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/r ./temp/fonts/open_sans/open_sans.css" -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/i <style>" -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/a </style>" -e "/<link .*\".\/fonts\/open_sans\/open_sans\.css\".*>/d" "./temp/index.html"
@@ -300,4 +292,4 @@ sed -i -e "/<script .*\".\/scripts\/application\.js\".*>/r ./temp/scripts/applic
 mv "./temp/index.html" "./MWC Wallet Standalone v$VERSION.html"
 
 # Cleanup
-rm -rf "./temp" "./master.zip" "./mwcwallet.com-master" "./Secp256k1-zkp-0.0.29.zip" "./BLAKE2b-0.0.2.zip" "./Ed25519-0.0.22.zip" "./X25519-0.0.23.zip" "./SMAZ-0.0.31.zip" "./asmjs" "./wasm"
+rm -rf "./temp" "./master.zip" "./mwcwallet.com-master"
