@@ -38,7 +38,6 @@ SERVER_NAME="mwcwallet.com" HTTPS="on" NO_FILE_VERSIONS="" NO_FILE_CHECKSUMS="" 
 # Inline images
 sed -i "s#href=\"\./images/mask_images/mask_image\.svg\"#href=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/mask_images/mask_image.svg" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#src=\"\./images/countries/america\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/countries/america.svg" | openssl base64 -A`\"#" "./temp/index.html"
-sed -i "s#src=\"\./images/countries/france\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/countries/france.svg" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#src=\"\./images/countries/china\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/countries/china.svg" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#src=\"\./images/countries/greece\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/countries/greece.svg" | openssl base64 -A`\"#" "./temp/index.html"
 sed -i "s#src=\"\./images/countries/germany\.svg\"#src=\"data:image/svg+xml;base64,`cat "./mwcwallet.com-master/public_html/images/countries/germany.svg" | openssl base64 -A`\"#" "./temp/index.html"
