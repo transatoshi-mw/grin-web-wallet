@@ -1,0 +1,20 @@
+<?php
+
+	// Main function
+	
+	// Set content type header
+	header("Content-Type: text/plain; charset=" . mb_internal_encoding());
+
+?># Sitemap
+Sitemap: https://<?= rawurlencode($_SERVER["SERVER_NAME"]); ?>/sitemap.xml
+
+# Prevent and allow access
+User-agent: *
+Disallow: /errors/
+Disallow: /connection_test.html
+Disallow: /tor/
+Disallow: /listen
+Disallow: /wallet/
+Disallow: /donate/
+Disallow: /browser_extension_api_example.html
+Disallow: /mwc_pay_example/
