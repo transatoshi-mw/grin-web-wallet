@@ -1,4 +1,4 @@
-# MWC Wallet Standalone
+# Grin HTML Wallet Standalone
 
 ### Description
-The forked Grin web wallet, that consists of just a single HTML file.
+Grin web wallet forked from mwcwallet.com, that consists of just a single HTML file.
